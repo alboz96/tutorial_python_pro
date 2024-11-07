@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Knowledge Quiz</title>
+    <style>
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .best-score {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #f1f1f1;
+            padding: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .logout-button {
+            bottom: 10px;
+            left: 10px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Knowledge Quiz: Test Your Expertise!</h1>
+
+    {% if score %}
+        <h2>Your score: {{ score }}%</h2>
+    {% else %}
+        <h2>Your score: No score yet</h2>
+    {% endif %}
+
+    <form action="/submit" method="POST">
+        <!-- Question 1: Artificial Intelligence in Python -->
+        <h2>Question 1: What Python library is commonly used for machine learning?</h2>
+        <input type="radio" name="question1" value="tensorflow"> TensorFlow<br>
+        <input type="radio" name="question1" value="numpy"> NumPy<br>
+        <input type="radio" name="question1" value="flask"> Flask<br>
+
+        <!-- Question 2: Computer Vision -->
+        <h2>Question 2: Which library is widely used for image processing in computer vision?</h2>
+        <input type="radio" name="question2" value="opencv"> OpenCV<br>
+        <input type="radio" name="question2" value="pandas"> Pandas<br>
+        <input type="radio" name="question2" value="scikit-learn"> Scikit-learn<br>
+
+        <!-- Question 3: NLP -->
+        <h2>Question 3: Which Python library is popular for NLP tasks?</h2>
+        <input type="radio" name="question3" value="nltk"> NLTK<br>
+        <input type="radio" name="question3" value="matplotlib"> Matplotlib<br>
+        <input type="radio" name="question3" value="flask"> Flask<br>
+
+        <!-- Question 4: AI Models in Python Applications -->
+        <h2>Question 4: What is the primary purpose of using AI models in Python applications?</h2>
+        <input type="radio" name="question4" value="automation"> Automation<br>
+        <input type="radio" name="question4" value="web_scraping"> Web Scraping<br>
+        <input type="radio" name="question4" value="data_analysis"> Data Analysis<br>
+
+        <br>
+        <input type="submit" value="Submit Answers">
+    </form>
+
+    <!-- Best score display -->
+    <div class="best-score">
+        <p>Best Score:
+            {% if best_score %}
+                {{ best_score.score }}% ({{ best_score.username }})
+            {% else %}
+                No scores yet
+            {% endif %}
+        </p>
+    </div>
+<br><br>
+    <!-- Logout button at the bottom -->
+    <form action="/logout" method="POST" style="display: inline;">
+        <button type="submit" class="logout-button">Logout</button>
+    </form>
+
+    <!-- Footer with information about the author -->
+    <footer>
+        <p>Developed by <strong>Alberto Nibbi</strong></p>
+    </footer>
+</body>
+</html>

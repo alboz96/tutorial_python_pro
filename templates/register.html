@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <style>
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .best-score {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #f1f1f1;
+            padding: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .logout-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Register for the Quiz</h1>
+    <form action="/register" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Register">
+    </form>
+
+    <p>Already have an account? <a href="/login">Login here</a></p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+            {% for category, message in messages %}
+                <li style="color: red;">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <!-- Footer with information about the author -->
+    <footer>
+        <p>Developed by <strong>Alberto Nibbi</strong>
+    </footer>
+</body>
+</html>
